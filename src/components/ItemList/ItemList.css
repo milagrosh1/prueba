@@ -1,0 +1,7 @@
+.contenedorProductos{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    gap: 3.2rem;
+    margin-left: 100px;
+}
