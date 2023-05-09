@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { CarritoContext } from "../CartContext/CartContext";
 import { db } from "../../Services/firebase/config";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, doc, addDoc, updateDoc } from 'firebase/firestore'
 
 
 const Checkout = () => {
@@ -15,10 +15,22 @@ const Checkout = () => {
     const [error, setError] = useState("");
     const [ordenId, setOrdenId] = useState("");
 
+
+
+    const discountStock = (err, id, stock, sellItems) => {
+        if (err === "") {
+            const productOut = doc(db, "productos", id)
+            updateDoc(productOut, {
+                stock: stock - sellItems,
+            })
+        }
+     return;
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (!nombre || !apellido || !telefono || !email || !emailConfirmacion) {
+        if (carrito.length === 0 || !nombre || !apellido || !telefono || !email || !emailConfirmacion) {
             setError("Por favor complete todos los campos.");
             return;
         }
@@ -55,8 +67,19 @@ const Checkout = () => {
                     "Se produjo un error al crear la orden. Por favor, inténtelo de nuevo."
                 );
             });
-    };
 
+            carrito.map((e) => (
+                discountStock(error, e.item.id, e.item.stock, e.cantidad)
+                    ))
+        
+    setNombre("");
+    setApellido("");
+    setTelefono("");
+    setEmail("");
+    setEmailConfirmacion("");
+    setError("");
+    }
+   
 
     return (
         <div>
@@ -117,7 +140,7 @@ const Checkout = () => {
             )}
             <Link to="/">Seguir comprando</Link>
         </div>
-    );
-};
+    )
+}
 
 export default Checkout;

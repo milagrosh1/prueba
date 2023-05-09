@@ -18,7 +18,7 @@ const Item = ({ nombre, id, precio, img, stock }) => {
         setAgregarCantidad(cantidad);
 
 
-        const item = { id, nombre, precio };
+        const item = { id, nombre, precio, stock};
         agregarProducto(item, cantidad);
     }
 

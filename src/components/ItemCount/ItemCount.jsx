@@ -3,7 +3,6 @@ import { useState } from 'react';
 
 const ItemCount = ({ inicial, stock, funcionAgregar }) => {
     const [contador, setContador] = useState(inicial);
-    console.log(contador);
 
     const incrementar = () => {
         if (contador < stock) {

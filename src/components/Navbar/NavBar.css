@@ -8,32 +8,41 @@
     flex-direction: column;
     min-height: 100vh;
   }
-.nav-item{
-    display: flex;
-}
 
-li{
-    list-style: none;
-    padding: 1px;
-    cursor: pointer;
-    color: rgb(0, 0, 0)
-}
+  
+  header{
+      background-color: #6c757d ;
+    }
+    
+    .nav-bar{
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .logo-medidas{
+        width: 6rem;
+        translate: 6rem 2.5rem;
+        scale: 3;
+    }
+    .nav-item{
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    li{
+        list-style: none;
+        padding: 1px;
+        cursor: pointer;
+        color: rgb(0, 0, 0)
+    }
 
-header{
-    background-color: #6c757d ;
-}
-
-.nav-bar{
-    display: flex;
-
-}
 .navLinks {
     display: inline-block;
     font-size: calc(1rem + 1vw);
     font-weight:lighter;
     text-decoration: none;
-    margin-right: 3rem;
-    margin-left: 2rem;
     padding: 1rem;
     cursor: pointer;
     color: rgba(0, 0, 0, 0.755);
